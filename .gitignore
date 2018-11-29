@@ -37,3 +37,8 @@
 # convenience files
 *.note
 *.tag
+
+# taskfiles
+.notes
+..notes.done
+t
