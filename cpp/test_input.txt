@@ -1,0 +1,10 @@
+This is a test input file. Now
+there was a linebreak.
+
+And there were two linebreaks.
+
+&*0987sadgkljhasdg-78257
+
+wEIRD Stuff.
+
+<< RL Stein
