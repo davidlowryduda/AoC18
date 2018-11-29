@@ -13,11 +13,19 @@
 #include <cstdlib>
 #include <vector>
 
+
+/*
+ * read_day --- Read input file for day <n>
+ */
+std::string
+read_day(int n);
+
+
 /*
  * read_file --- Read contents of file
  */
 std::string
-read_file(const char* filename);
+read_file(const std::string filename);
 
 
 #endif /* UTILS_H */

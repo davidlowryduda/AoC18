@@ -2,7 +2,7 @@
 #include <fstream>
 
 std::string
-read_file(const char* filename)
+read_file(const std::string filename)
 {
   std::string contents;
   std::ifstream file(filename, std::ios::in);
@@ -22,4 +22,13 @@ read_file(const char* filename)
   file.seekg(0, std::ios::beg);
   file.read(&contents[0], contents.size());
   return contents;
+}
+
+
+std::string
+read_day(int n)
+{
+  std::string contents;
+  std::string filename = "inputs/input" + std::to_string(n) + ".txt";
+  return read_file(filename);
 }
