@@ -12,6 +12,9 @@
 #include <string>
 #include <cstdlib>
 #include <vector>
+#include <stdexcept>
+#include <sstream>
+#include <unordered_map>
 
 /*
  * read_file --- Read contents of file
