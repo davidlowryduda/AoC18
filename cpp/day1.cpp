@@ -32,6 +32,7 @@ void part1(std::string content)
 void part2(std::string content)
 {
   int num = 0;
+  int * pval;
   long long total = 0;
   std::string line;
   std::string op;
@@ -49,8 +50,9 @@ void part2(std::string content)
         throw std::invalid_argument("Operation not recognized.");
       }
 
-      if (seen[total] == 0) { seen[total]++; }
-      else if (seen[total] > 0)
+      pval = &seen[total];
+      if (*pval == 0) { (*pval)++; }
+      else if (*pval > 0)
       {
         std::cout << total << std::endl;
         return;
