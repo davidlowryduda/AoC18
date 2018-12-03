@@ -14,7 +14,7 @@ def _read_file(filename):
         raise
 
 
-def read_input(day):
+def read_input(day, test=False):
     """
     Returns file of input for `day`.
 
@@ -23,11 +23,13 @@ def read_input(day):
 
     Note that it's likely that `read_input(<day>).read()` will be called.
     """
+    if test:
+        return _read_file("inputs/test_input{}.txt".format(day))
     return _read_file("inputs/input{}.txt".format(day))
 
 
-def input_lines(day):
+def input_lines(day, test=False):
     """
     Saves the inputfile from day `day` line-by-line, stripping linebreaks.
     """
-    return list(map(lambda x: x.strip(), read_input(day).readlines()))
+    return list(map(lambda x: x.strip(), read_input(day, test=test).readlines()))
