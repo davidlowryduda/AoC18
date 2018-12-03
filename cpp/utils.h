@@ -12,6 +12,11 @@
 #include <string>
 #include <cstdlib>
 #include <vector>
+#include <algorithm>
+#include <stdexcept>
+#include <sstream>
+#include <unordered_map>
+#include <set>
 
 
 /*
