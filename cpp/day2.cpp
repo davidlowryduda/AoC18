@@ -25,6 +25,8 @@ digest_line(std::string word)
 
 /*
  * contains_value --- returns True if key is in the unordered_map
+ *
+ * Essentially obsolete from std::count in <algorithm>
  */
 bool contains_value(std::unordered_map<char, int> map, int rep)
 {
@@ -39,8 +41,37 @@ bool contains_value(std::unordered_map<char, int> map, int rep)
 }
 
 
-
 void part1(std::string content)
+{
+  int doubles {0};
+  int triples {0};
+  std::string line;
+  std::istringstream input(content);
+
+  while (std::getline(input, line))
+  {
+    bool has_doubles = false;
+    bool has_triples = false;
+    for (auto it = line.begin(); it < line.end(); ++it)
+    {
+      if (!has_doubles && std::count(line.begin(), line.end(), *it) == 2)
+      {
+        ++doubles;
+        has_doubles = true;
+      }
+      if (!has_triples && std::count(line.begin(), line.end(), *it) == 3)
+      {
+        ++triples;
+        has_triples = true;
+      }
+    }
+  }
+  std::cout << doubles*triples << std::endl;
+}
+
+
+
+void OLD_part1(std::string content)
 {
   int doubles {0};
   int triples {0};
