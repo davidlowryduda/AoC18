@@ -31,6 +31,30 @@ def collapse_maximally(line):
         cline = collapse_once(cline)
     return cline
 
+def better_collapse_maximally(line):
+    out = ""
+    for c in line:
+        if out and are_same(out[-1], c):
+            out = out[:-1]
+        else:
+            out += c
+    return out
+
+def array_collapse_maximally(line):
+    """
+    In better_collapse_maximally, lots of strings are being recopied all
+    over the place. If we use an array, we can avoid this. But we must
+    initialize and translate from the array. Let's do a speed test.
+    """
+    arr = [l for l in line] # loses time
+    out = []
+    for l in arr:
+        if out and are_same(out[-1], l):
+            out.pop()       # presumably saves time
+        else:
+            out.append(l)   # also saves time
+    return ''.join(out)     # loses time
+
 def remove_pair(ins, a):
     A = chr(ord(a) - 32)
     return ''.join(l for l in ins if (l != a) and (l != A))
@@ -38,7 +62,9 @@ def remove_pair(ins, a):
 def do_part_1(test=False):
     lines = input_lines(5, test=test)
     line = lines[0].strip()  # This challenge has only one line
-    print(len(collapse_maximally(line)))
+    #print(len(collapse_maximally(line)))
+    #print(len(better_collapse_maximally(line)))
+    print(len(array_collapse_maximally(line)))
     return
 
 
@@ -47,9 +73,9 @@ def do_part_2(test=False):
     line = lines[0].strip()  # This challenge has only one line
     record = 9999999
     for letter in "abcdefghijklmnopqrstuvwxyz":
-        col = collapse_maximally(remove_pair(line, letter))
-        irec = len(collapse_maximally(remove_pair(line, letter)))
-        print(letter, irec)
+        #irec = len(collapse_maximally(remove_pair(line, letter)))
+        #irec = len(better_collapse_maximally(remove_pair(line, letter)))
+        irec = len(array_collapse_maximally(remove_pair(line, letter)))
         if irec < record:
             record = irec
     print(record)

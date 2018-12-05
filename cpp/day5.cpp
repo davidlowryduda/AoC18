@@ -45,6 +45,19 @@ std::string collapse_maximally(std::string line)
 }
 
 
+std::string better_collapse_maximally(std::string line)
+{
+  std::string res = "";
+  for (auto c : line){
+    if (res.size() > 0 && related(res[res.size()-1], c)){
+      res.pop_back();
+    }
+    else { res.push_back(c); }
+  }
+  return res;
+}
+
+
 std::string remove_pair(std::string line, char c)
 {
   char C = (int)c + 32;
@@ -62,7 +75,8 @@ void part1(std::string content)
   std::string line;
   std::istringstream input(content);
   std::getline(input, line); // input is only one line
-  std::cout << collapse_maximally(line).length() << std::endl;
+  //std::cout << collapse_maximally(line).length() << std::endl;
+  std::cout << better_collapse_maximally(line).length() << std::endl;
 }
 
 
@@ -77,7 +91,8 @@ void part2(std::string content)
   int icomp = 0;
   for (auto l : alpha){
     std::string scomp = remove_pair(line, l);
-    icomp = collapse_maximally(scomp).length();
+    //icomp = collapse_maximally(scomp).length();
+    icomp = better_collapse_maximally(scomp).length();
     if (icomp < record) record = icomp;
   }
   std::cout << record << std::endl;
