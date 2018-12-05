@@ -45,7 +45,7 @@ std::string collapse_maximally(std::string line)
 }
 
 
-std::string better_collapse_maximally(std::string line)
+std::string better_collapse_maximally(const std::string & line)
 {
   std::string res = "";
   for (auto c : line){
@@ -58,7 +58,7 @@ std::string better_collapse_maximally(std::string line)
 }
 
 
-std::string remove_pair(std::string line, char c)
+std::string remove_pair(const std::string & line, char c)
 {
   char C = (int)c + 32;
   std::string out = "";
@@ -70,7 +70,7 @@ std::string remove_pair(std::string line, char c)
 
 
 
-void part1(std::string content)
+void part1(const std::string & content)
 {
   std::string line;
   std::istringstream input(content);
@@ -80,7 +80,7 @@ void part1(std::string content)
 }
 
 
-void part2(std::string content)
+void part2(const std::string & content)
 {
   std::string line;
   std::istringstream input(content);
